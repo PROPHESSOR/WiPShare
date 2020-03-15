@@ -1,5 +1,5 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Vue from 'vue';
+import App from './App.vue';
 
 import 'onsenui/css/onsenui.css';
 import 'onsenui/css/onsen-css-components.css';
@@ -8,10 +8,10 @@ import VueOnsen from 'vue-onsenui';
 
 Vue.use(VueOnsen);
 
-new Vue({
+const WiPShare = new Vue({
   el: '#app',
-  render: h => h(App),
   beforeCreate() {
     this.$ons.platform.select('android');
-  }
-})
+  },
+  render: h => h(App),
+});
