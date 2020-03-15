@@ -10,5 +10,8 @@ Vue.use(VueOnsen);
 
 new Vue({
   el: '#app',
-  render: h => h(App)
+  render: h => h(App),
+  beforeCreate() {
+    this.$ons.platform.select('android');
+  }
 })
