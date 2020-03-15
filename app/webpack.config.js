@@ -1,11 +1,11 @@
-var path = require('path')
-var webpack = require('webpack')
+const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry: './src/main.js',
   output: {
-    path: path.resolve(__dirname, '../www'),
-    publicPath: '/dist/',
+    path: path.resolve(__dirname, '../www/dist'),
+    publicPath: 'dist/',
     filename: 'build.js'
   },
   module: {
@@ -16,7 +16,7 @@ module.exports = {
           'vue-style-loader',
           'css-loader'
         ],
-      },      {
+      }, {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
@@ -76,3 +76,7 @@ if (process.env.NODE_ENV === 'production') {
     })
   ])
 }
+
+const fs = require('fs');
+
+fs.copyFileSync(path.resolve(__dirname, './index.html'), path.resolve(__dirname, '../www/index.html'));
