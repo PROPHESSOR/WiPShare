@@ -4,21 +4,15 @@
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
     </feature>
-    <name>HelloCordova</name>
+    <name>WiPShare</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        An evolutionary app :)
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+    <author email="xenteze@gmail.com" href="https://github.com/PROPHESSOR">
+        PROPHESSOR
     </author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
-    <allow-intent href="https://*/*" />
-    <allow-intent href="tel:*" />
-    <allow-intent href="sms:*" />
-    <allow-intent href="mailto:*" />
-    <allow-intent href="geo:*" />
-    <allow-intent href="market:*" />
     <preference name="loglevel" value="DEBUG" />
 </widget>
