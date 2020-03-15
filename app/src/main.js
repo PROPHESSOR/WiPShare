@@ -8,7 +8,7 @@ import VueOnsen from 'vue-onsenui';
 
 Vue.use(VueOnsen);
 
-const WiPShare = new Vue({
+window.WiPShare = new Vue({
   el: '#app',
   beforeCreate() {
     this.$ons.platform.select('android');
