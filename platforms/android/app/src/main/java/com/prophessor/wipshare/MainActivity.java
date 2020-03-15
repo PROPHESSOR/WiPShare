@@ -1,4 +1,4 @@
-package io.cordova.hellocordova;
+package com.prophessor.wipshare;
 
 import android.os.Bundle;
 import org.apache.cordova.*;
