@@ -31,11 +31,14 @@ export default {
     WifiListItem,
   },
 
-  data() {
-    return {
-      networks: null,
-      knownNetworks: null,
-    };
+  computed: {
+    networks() {
+      return this.$store.state.availableNetworks;
+    },
+
+    knownNetworks() {
+      return this.$store.state.knownNetworks;
+    },
   },
 
   mounted() {
