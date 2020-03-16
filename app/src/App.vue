@@ -4,7 +4,7 @@
       <div class="center">WiPShare v{{ $store.state.version }}</div>
     </v-ons-toolbar>
 
-    <v-ons-progress-bar v-if="!(networks || knownNetworks)" indeterminate />
+    <v-ons-progress-bar v-if="!(networks.length || knownNetworks.length)" indeterminate />
     <div v-else class="content">
       <v-ons-list>
         <v-ons-list-header>Доступные WIFI сети</v-ons-list-header>
