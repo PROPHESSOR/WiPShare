@@ -57,11 +57,16 @@ export default {
 
       console.log('wlan module attached', wlan);
 
-      await wlan.startScan();
+      if (!(await wlan.isWifiEnabled())) {
+        console.log('Wifi disabled! Trying to enable...');
+        const result = await wlan.enableWifi();
 
-      console.log('scan ended');
+        console.log('result', result);
 
-      const networks = await wlan.getScanResults();
+        if (result !== 'OK') console.warn('Result is not OK!'); // TODO: Handle
+      }
+
+      const networks = await wlan.scan();
 
       console.log('networks', networks);
 
