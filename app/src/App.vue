@@ -64,6 +64,23 @@ export default {
         if (result !== 'OK') console.warn('Result is not OK!'); // TODO: Handle
       }
 
+      console.log('Requesting permissions');
+
+      try {
+        await wlan.requestPermission();
+      } catch (e) {
+        console.error(e);
+        await this.$ons.notification.alert({
+          title: 'Не бойся!',
+          messageHTML:
+            '<b>Я не собираюсь тебя отслеживать...</b><br/>Просто в андроидах всё так по-дэбильному сделано, что, чтобы просканировать доступные WiFi сети, мне нужно право на получение местоположения :/<br/><br/><small>Если не веришь - прогугли "WifiManager.getScanResults() необходимые права"</small>',
+          buttonLabels: 'Выйти',
+        });
+        navigator.app.exitApp();
+      }
+
+      console.log('Ok');
+
       wlan
         .scan()
         .then(networks => {
