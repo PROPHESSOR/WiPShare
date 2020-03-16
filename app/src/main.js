@@ -22,5 +22,5 @@ window.WiPShare = new Vue({
 });
 
 document.addEventListener('deviceready', () => {
-  window.WiPShare.$store.dispatch('ready');
+  window.WiPShare.$store.dispatch('ready', true);
 });
