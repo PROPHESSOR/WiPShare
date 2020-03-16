@@ -1,5 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
+const fs = require('fs');
+const { version } = require('./package.json');
 
 module.exports = {
   entry: ['@babel/polyfill', './src/main.js'],
@@ -86,11 +88,6 @@ if (process.env.NODE_ENV === 'production') {
   module.exports.devtool = '#source-map';
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"',
-      },
-    }),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: false,
       compress: {
@@ -103,7 +100,14 @@ if (process.env.NODE_ENV === 'production') {
   ]);
 }
 
-const fs = require('fs');
+module.exports.plugins = (module.exports.plugins || []).concat([
+  new webpack.DefinePlugin({
+    'process.env': {
+      NODE_ENV: `"${process.env.NODE_ENV}"`,
+      PACKAGE_VERSION: `"${version}"`,
+    },
+  }),
+]);
 
 fs.copyFileSync(
   path.resolve(__dirname, './index.html'),

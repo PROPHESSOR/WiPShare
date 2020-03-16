@@ -6,6 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     ready: false,
+    version: process.env.PACKAGE_VERSION || '?',
   },
 
   mutations: {

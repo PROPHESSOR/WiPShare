@@ -1,7 +1,7 @@
 <template>
   <v-ons-page>
     <v-ons-toolbar>
-      <div class="center">WiPShare</div>
+      <div class="center">WiPShare v{{ $store.state.version }}</div>
     </v-ons-toolbar>
 
     <v-ons-progress-bar v-if="!(networks || knownNetworks)" indeterminate />
