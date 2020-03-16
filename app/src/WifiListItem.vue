@@ -1,7 +1,7 @@
 <template>
   <v-ons-list-item expandable :expanded.sync="isExpanded">
     {{ wlan.SSID || wlan.BSSID }}
-    <div class="expandable-content">{{ wlan.password || 'Unknown' }}</div>
+    <div class="expandable-content">{{ JSON.stringify(wlan) }}</div>
   </v-ons-list-item>
 </template>
 
