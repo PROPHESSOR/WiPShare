@@ -5,18 +5,20 @@
     </v-ons-toolbar>
 
     <v-ons-progress-bar v-if="!(networks && knownNetworks)" indeterminate />
-    <div v-else class="content">
-      <v-ons-list>
-        <v-ons-list-header>Доступные WIFI сети</v-ons-list-header>
-        <WifiListItem v-for="wlan in networks" :key="wlan.bssid" :wlan="wlan" />
-      </v-ons-list>
+    <div class="content">
+      <template v-if="networks && knownNetworks">
+        <v-ons-list>
+          <v-ons-list-header>Доступные WIFI сети</v-ons-list-header>
+          <WifiListItem v-for="wlan in networks" :key="wlan.bssid" :wlan="wlan" />
+        </v-ons-list>
 
-      <v-ons-list>
-        <v-ons-list-header>Известные WIFI сети</v-ons-list-header>
-        <v-ons-list-item v-for="(name, index) in knownNetworks" :key="name + index">
-          {{ name }}
-        </v-ons-list-item>
-      </v-ons-list>
+        <v-ons-list>
+          <v-ons-list-header>Известные WIFI сети</v-ons-list-header>
+          <v-ons-list-item v-for="(name, index) in knownNetworks" :key="name + index">
+            {{ name }}
+          </v-ons-list-item>
+        </v-ons-list>
+      </template>
     </div>
   </v-ons-page>
 </template>
