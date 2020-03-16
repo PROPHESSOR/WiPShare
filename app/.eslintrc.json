@@ -10,7 +10,8 @@
     ],
     "globals": {
         "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
+        "SharedArrayBuffer": "readonly",
+        "cordova": "readonly"
     },
     "parserOptions": {
         "ecmaVersion": 2018,
@@ -19,6 +20,5 @@
     "plugins": [
         "vue"
     ],
-    "rules": {
-    }
+    "rules": {}
 }

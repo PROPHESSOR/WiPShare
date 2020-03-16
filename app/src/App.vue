@@ -12,31 +12,55 @@
 </template>
 
 <script>
-import WifiListItem from './WifiListItem';
+import WifiListItem from './WifiListItem.vue';
 
 export default {
-  name: 'app',
+  name: 'App',
 
   components: {
-    WifiListItem
+    WifiListItem,
   },
 
-  data () {
+  data() {
     return {
       networks: [
         {
-          bssid: '00:00:00:00:00:00',
-          password: '12345678'
+          BSSID: '00:00:00:00:00:00',
+          password: '12345678',
         },
         {
-          bssid: '00:00:00:00:00:01',
-          password: '12345679'
+          BSSID: '00:00:00:00:00:01',
+          password: '12345679',
         },
-      ]
+      ],
+    };
+  },
+
+  mounted() {
+    // FIXME: 
+    if (window.WiPShare.ready) this.rescan();
+  },
+
+  methods: {
+    async rescan() {
+      console.log('Prepare to rescan');
+
+      const wlan = cordova.require('wifiwizard2.WifiWizard2');
+
+      console.log('wlan module attached', wlan);
+
+      await wlan.startScan();
+
+      console.log('scan ended');
+
+      const networks = await wlan.getScanResults();
+
+      console.log('networks', networks);
+
+      this.networks = networks;
     }
-  }
-}
+  },
+};
 </script>
 
-<style>
-</style>
+<style></style>
