@@ -9,7 +9,14 @@
   "installed_plugins": {
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.prophessor.wipshare"
+    },
+    "wifiwizard2": {
+      "PACKAGE_NAME": "com.prophessor.wipshare"
     }
   },
-  "dependent_plugins": {}
+  "dependent_plugins": {
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "com.prophessor.wipshare"
+    }
+  }
 }
