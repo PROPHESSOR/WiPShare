@@ -38,6 +38,7 @@ export default {
 
   mounted() {
     if (this.$store.state.ready) this.rescan();
+    else document.addEventListener('deviceready', () => this.rescan());
   },
 
   methods: {
@@ -57,7 +58,7 @@ export default {
       console.log('networks', networks);
 
       this.networks = networks;
-    }
+    },
   },
 };
 </script>
