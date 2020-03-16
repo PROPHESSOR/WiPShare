@@ -21,7 +21,7 @@ export default new Vuex.Store({
      * @param {Array<WLAN>} networks
      */
     set_available_networks(state, networks) {
-      state.availableNetworks = networks;
+      Vue.set(state, 'availableNetworks', networks);
     },
 
     /**
@@ -29,7 +29,7 @@ export default new Vuex.Store({
      * @param {Array<string>} networks
      */
     set_known_networks(state, networks) {
-      state.knownNetworks = networks;
+      Vue.set(state, 'knownNetworks', networks);
     },
   },
 
