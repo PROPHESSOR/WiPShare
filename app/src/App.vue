@@ -4,7 +4,8 @@
       <div class="center">WiPShare</div>
     </v-ons-toolbar>
 
-    <div class="content">
+    <v-ons-progress-bar v-if="!(networks || knownNetworks)" indeterminate />
+    <div v-else class="content">
       <v-ons-list>
         <v-ons-list-header>Доступные WIFI сети</v-ons-list-header>
         <WifiListItem v-for="wlan in networks" :key="wlan.bssid" :wlan="wlan" />
@@ -32,16 +33,7 @@ export default {
 
   data() {
     return {
-      networks: [
-        {
-          BSSID: '00:00:00:00:00:00',
-          password: '12345678',
-        },
-        {
-          BSSID: '00:00:00:00:00:01',
-          password: '12345679',
-        },
-      ],
+      networks: [],
       knownNetworks: [],
     };
   },
