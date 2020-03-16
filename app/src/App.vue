@@ -4,8 +4,9 @@
       <div class="center">WiPShare v{{ $store.state.version }}</div>
     </v-ons-toolbar>
 
-    <v-ons-progress-bar v-if="!networks || !knownNetworks" indeterminate />
     <div class="content">
+      <v-ons-progress-bar v-if="!networks || !knownNetworks" indeterminate />
+
       <v-ons-list v-if="networks">
         <v-ons-list-header>Доступные WIFI сети</v-ons-list-header>
         <WifiListItem v-for="wlan in networks" :key="wlan.bssid" :wlan="wlan" />
