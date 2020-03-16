@@ -4,7 +4,7 @@
       <div class="center">WiPShare v{{ $store.state.version }}</div>
     </v-ons-toolbar>
 
-    <v-ons-progress-bar v-if="!(networks.length || knownNetworks.length)" indeterminate />
+    <v-ons-progress-bar v-if="!(networks && knownNetworks)" indeterminate />
     <div v-else class="content">
       <v-ons-list>
         <v-ons-list-header>Доступные WIFI сети</v-ons-list-header>
@@ -33,8 +33,8 @@ export default {
 
   data() {
     return {
-      networks: [],
-      knownNetworks: [],
+      networks: null,
+      knownNetworks: null,
     };
   },
 
@@ -60,19 +60,23 @@ export default {
         if (result !== 'OK') console.warn('Result is not OK!'); // TODO: Handle
       }
 
-      const networks = await wlan.scan();
-
-      console.log('networks', networks);
-
-      this.networks = networks;
+      wlan
+        .scan()
+        .then(networks => {
+          console.log('networks', networks);
+          this.$store.dispatch('set_available_networks', networks);
+        })
+        .catch(console.error);
 
       console.log('Getting known networks');
 
-      const knownNetworks = await wlan.listNetworks();
-
-      console.log('knownNetworks', knownNetworks);
-
-      this.knownNetworks = knownNetworks;
+      wlan
+        .listNetworks()
+        .then(knownNetworks => {
+          console.log('knownNetworks', knownNetworks);
+          this.$store.dispatch('set_known_networks', knownNetworks);
+        })
+        .catch(console.error);
     },
   },
 };
