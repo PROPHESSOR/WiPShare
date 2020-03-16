@@ -37,8 +37,7 @@ export default {
   },
 
   mounted() {
-    // FIXME: 
-    if (window.WiPShare.ready) this.rescan();
+    if (this.$store.state.ready) this.rescan();
   },
 
   methods: {

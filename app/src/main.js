@@ -4,28 +4,23 @@ import 'onsenui/css/onsen-css-components.css';
 import Vue from 'vue';
 import VueOnsen from 'vue-onsenui';
 
+import store from './Store';
+
 import App from './App.vue';
 
 Vue.use(VueOnsen);
 
 window.WiPShare = new Vue({
   el: '#app',
-  data() {
-    return {
-      ready: false,
-    };
-  },
+  store,
+
   beforeCreate() {
     this.$ons.platform.select('android');
   },
-  methods: {
-    initialize() {
-      this.ready = true;
-    },
-  },
+
   render: h => h(App),
 });
 
 document.addEventListener('deviceready', () => {
-  window.WiPShare.initialize();
+  window.WiPShare.$store.dispatch('ready');
 });

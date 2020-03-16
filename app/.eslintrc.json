@@ -20,5 +20,7 @@
     "plugins": [
         "vue"
     ],
-    "rules": {}
+    "rules": {
+        "no-param-reassign": "off"
+    }
 }
