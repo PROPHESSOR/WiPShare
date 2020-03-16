@@ -4,22 +4,20 @@
       <div class="center">WiPShare v{{ $store.state.version }}</div>
     </v-ons-toolbar>
 
-    <v-ons-progress-bar v-if="!(networks && knownNetworks)" indeterminate />
-    <div class="content">
-      <template v-if="networks && knownNetworks">
-        <v-ons-list>
-          <v-ons-list-header>Доступные WIFI сети</v-ons-list-header>
-          <WifiListItem v-for="wlan in networks" :key="wlan.bssid" :wlan="wlan" />
-        </v-ons-list>
+    <v-ons-progress-bar v-if="!networks || !knownNetworks" indeterminate />
+    <v-ons-list-item class="content">
+      <v-ons-list v-if="networks">
+        <v-ons-list-header>Доступные WIFI сети</v-ons-list-header>
+        <WifiListItem v-for="wlan in networks" :key="wlan.bssid" :wlan="wlan" />
+      </v-ons-list>
 
-        <v-ons-list>
-          <v-ons-list-header>Известные WIFI сети</v-ons-list-header>
-          <v-ons-list-item v-for="(name, index) in knownNetworks" :key="name + index">
-            {{ name }}
-          </v-ons-list-item>
-        </v-ons-list>
-      </template>
-    </div>
+      <v-ons-list v-if="knownNetworks">
+        <v-ons-list-header>Известные WIFI сети</v-ons-list-header>
+        <v-ons-list-item v-for="(name, index) in knownNetworks" :key="name + index">
+          {{ name }}
+        </v-ons-list-item>
+      </v-ons-list>
+    </v-ons-list-item>
   </v-ons-page>
 </template>
 
