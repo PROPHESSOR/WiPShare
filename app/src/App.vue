@@ -5,7 +5,7 @@
     </v-ons-toolbar>
 
     <v-ons-progress-bar v-if="!networks || !knownNetworks" indeterminate />
-    <v-ons-list-item class="content">
+    <div class="content">
       <v-ons-list v-if="networks">
         <v-ons-list-header>Доступные WIFI сети</v-ons-list-header>
         <WifiListItem v-for="wlan in networks" :key="wlan.bssid" :wlan="wlan" />
@@ -17,7 +17,7 @@
           {{ name }}
         </v-ons-list-item>
       </v-ons-list>
-    </v-ons-list-item>
+    </div>
   </v-ons-page>
 </template>
 
