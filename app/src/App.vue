@@ -5,8 +5,15 @@
     </v-ons-toolbar>
 
     <v-ons-list>
-      <v-ons-list-header>Известные WIFI сети</v-ons-list-header>
+      <v-ons-list-header>Доступные WIFI сети</v-ons-list-header>
       <WifiListItem v-for="wlan in networks" :key="wlan.bssid" :wlan="wlan" />
+    </v-ons-list>
+
+    <v-ons-list>
+      <v-ons-list-header>Известные WIFI сети</v-ons-list-header>
+      <v-ons-list-item v-for="(name, index) in knownNetworks" :key="name + index">
+        {{ name }}
+      </v-ons-list-item>
     </v-ons-list>
   </v-ons-page>
 </template>
@@ -33,6 +40,7 @@ export default {
           password: '12345679',
         },
       ],
+      knownNetworks: [],
     };
   },
 
@@ -58,6 +66,14 @@ export default {
       console.log('networks', networks);
 
       this.networks = networks;
+
+      console.log('Getting known networks');
+
+      const knownNetworks = await wlan.listNetworks();
+
+      console.log('knownNetworks', knownNetworks);
+
+      this.knownNetworks = knownNetworks;
     },
   },
 };
